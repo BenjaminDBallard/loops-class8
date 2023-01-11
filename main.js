@@ -18,7 +18,7 @@ const person2 = {
   firstName: "Ben",
   lastName: "Ballard",
   birthDate: "January 1, 1997",
-  gender: "Male",
+  gender: "Female",
 };
 
 const person3 = {
@@ -56,8 +56,8 @@ const test = (input) => {
 };
 
 for (const person of arrayOfPersons) {
-    console.log(test(person.birthDate));
-  }
+  console.log(test(person.birthDate));
+}
 
 const over21 = (input) => {
   if (parseInt(2022 - input.slice(-4)) >= 21) {
@@ -71,7 +71,42 @@ for (const person of arrayOfPersons) {
   console.log("over 21? :" + over21(person.birthDate));
 }
 
+// ========================================================================
 
-const younger21 = () => {
-    if(perseInt(input.filter(person) => ))
-}
+//Test Array:
+
+const people = ["matt", "sarah", "james", "ben"];
+
+// .find() from scratch:
+
+Array.prototype.findScratch = function (callback) {
+  let result;
+  for (let i = 0; i < this.length; i++) {
+    let isFound = callback(this[i], i, this);
+    if (isFound) {
+      result = this[i];
+      break;
+    }
+  }
+  return result;
+};
+
+console.log("find: " + people.findScratch((element) => element.length === 3));
+
+// .findIndex() from scratch:
+
+Array.prototype.findIndexScratch = function (callback) {
+  let result;
+  for (let i = 0; i < this.length; i++) {
+    let isFound = callback(this[i], i, this);
+    if (isFound) {
+      result = i;
+      break;
+    }
+  }
+  return result;
+};
+
+console.log(
+  "findIndex: " + people.findIndexScratch((element) => element === "ben")
+);
